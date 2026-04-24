@@ -1,0 +1,279 @@
+/* CSS Variables for theming */
+:root {
+    --bg-color: #1a1a2e;
+    --text-main: #ffffff;
+    --accent-glow: #ff9a9e; /* Warm Peach */
+    --secondary-glow: #fecfef; /* Soft Pink */
+    --cyan-pop: #00f2fe; /* Keeping a pop of cyan */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    overflow-x: hidden;
+}
+
+/* Background Image with Blur Effect */
+.bg-image {
+    position: fixed;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px; /* Stretching out edges to prevent blurred cutoffs */
+    background: url('assets/Beach.JPg') center/cover no-repeat;
+    filter: blur(12px) brightness(0.6);
+    z-index: -2;
+}
+
+/* Animated Gradient Background */
+.animated-bg {
+    /* Converted hex to transparent RGBA to let the blurred image show through */
+    background: linear-gradient(-45deg, rgba(26, 26, 46, 0.8), rgba(255, 154, 158, 0.3), rgba(0, 242, 254, 0.2), rgba(26, 26, 46, 0.9));
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.hero h1 {
+    font-size: 4.5rem;
+    margin-bottom: 1rem;
+    animation: slideDown 1s cubic-bezier(0.25, 1, 0.5, 1);
+    text-shadow: 0 0 15px rgba(255, 154, 158, 0.5);
+}
+
+.hero h2 {
+    font-size: 2rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    min-height: 40px; 
+}
+
+.typing-text {
+    color: var(--accent-glow);
+    border-right: 3px solid var(--accent-glow);
+    animation: blinkCursor 0.75s step-end infinite;
+}
+
+@keyframes blinkCursor {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--accent-glow); }
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Floating Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    font-size: 2rem;
+    animation: float 2s ease-in-out infinite;
+    cursor: pointer;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+/* About Section */
+.about-section {
+    padding: 80px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-text {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    margin-bottom: 50px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease-out;
+}
+
+.about-text.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Awesome Story Layout */
+.story-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 80px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease-out;
+}
+
+.story-row.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.story-row.reverse {
+    flex-direction: row-reverse;
+}
+
+.story-text-box {
+    flex: 1;
+    min-width: 300px;
+    padding: 40px;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.story-text-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 154, 158, 0.15);
+    border-color: rgba(255, 154, 158, 0.5);
+}
+
+.story-text-box h3 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: var(--accent-glow);
+}
+
+.story-text-box p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #eaeaea;
+}
+
+.story-image-box {
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+/* Super Awesome Image Animations */
+.framed-img {
+    max-width: 100%;
+    width: 350px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: floatSlow 6s ease-in-out infinite;
+}
+
+.framed-img:hover {
+    transform: scale(1.05) rotate(3deg);
+    box-shadow: 0 20px 40px rgba(0, 242, 254, 0.3);
+}
+
+.framed-img.tilt-left { animation-delay: 1s; }
+.framed-img.tilt-left:hover { transform: scale(1.05) rotate(-3deg); }
+
+@keyframes floatSlow {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Hero Profile Blob Morph */
+.blob-profile {
+    width: 250px;
+    height: 250px;
+    background-image: url('assets/Peach.jpeg');
+    background-size: cover;
+    background-position: center;
+    margin: 0 auto 30px auto;
+    box-shadow: 0 0 30px rgba(255, 154, 158, 0.6);
+    animation: morph 8s ease-in-out infinite, floatSlow 4s ease-in-out infinite;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+@keyframes morph {
+    0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+    50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+    100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+}
+
+/* Image Card Styling */
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    cursor: pointer;
+}
+
+.card-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* Bike Page Specific Styles */
+.back-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 10px 25px;
+    font-size: 1.1rem;
+    color: var(--accent-glow);
+    text-decoration: none;
+    border: 1px solid var(--accent-glow);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background: var(--cyan-pop);
+    color: #000;
+    box-shadow: 0 0 20px var(--cyan-pop);
+    transform: scale(1.1);
+}
+
+.bike-image {
+    width: 100%;
+    max-width: 700px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(255, 154, 158, 0.3);
+    animation: floatSlow 5s ease-in-out infinite;
+}
