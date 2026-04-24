@@ -4,179 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shantanu Sharma | Software Engineer</title>
-    <style>
-        /* CSS Variables for theming */
-        :root {
-            --bg-color: #0f0c29;
-            --text-main: #ffffff;
-            --accent-glow: #00f2fe;
-            --secondary-glow: #4facfe;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            overflow-x: hidden;
-        }
-
-        /* Animated Gradient Background */
-        .animated-bg {
-            background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #000000);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            animation: slideDown 1s cubic-bezier(0.25, 1, 0.5, 1);
-            text-shadow: 0 0 10px var(--accent-glow), 0 0 20px var(--secondary-glow);
-        }
-
-        .hero h2 {
-            font-size: 2rem;
-            font-weight: 300;
-            margin-bottom: 2rem;
-            min-height: 40px; /* Prevents layout shift during typing */
-        }
-
-        .typing-text {
-            color: var(--accent-glow);
-            border-right: 3px solid var(--accent-glow);
-            animation: blinkCursor 0.75s step-end infinite;
-        }
-
-        @keyframes blinkCursor {
-            from, to { border-color: transparent; }
-            50% { border-color: var(--accent-glow); }
-        }
-
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Floating Scroll Indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 40px;
-            font-size: 2rem;
-            animation: float 2s ease-in-out infinite;
-            cursor: pointer;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
-
-        /* About Section */
-        .about-section {
-            padding: 100px 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .about-text {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin-bottom: 50px;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 1s ease-out;
-        }
-
-        .about-text.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Card Grid with Hover Animations */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            padding: 20px;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            opacity: 0;
-            transform: scale(0.8);
-        }
-
-        .card.visible {
-            animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-        }
-
-        @keyframes popIn {
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .card:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 10px 20px rgba(0, 242, 254, 0.2);
-            border-color: var(--accent-glow);
-        }
-
-        .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--accent-glow);
-        }
-
-        .card p {
-            font-size: 1rem;
-            line-height: 1.5;
-            color: #d1d1d1;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <!-- Blurry Background Image -->
+    <div class="bg-image"></div>
 
     <!-- Animated Background -->
     <div class="animated-bg"></div>
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>Shantanu Sharma</h1>
+        <div class="blob-profile"></div>
+        <h1>Hi, I'm Shantanu</h1>
         <h2><span class="typing-text"></span></h2>
         <div class="scroll-indicator" onclick="scrollToAbout()">↓</div>
     </section>
@@ -184,28 +25,56 @@
     <!-- About Section -->
     <section class="about-section" id="about">
         <div class="about-text scroll-reveal">
-            Hello world! I'm a passionate <strong>Software Engineer</strong> based in the beautiful city of <strong>Jaipur</strong>. 
-            Armed with a B.Tech degree and an insatiable curiosity, I write clean, efficient, and super awesome code. 
-            Life is all about balance—when I'm not crushing bugs or building the next big thing, you'll find me leveling up in video games, 
-            chasing the horizon on my bike, and just having a great time living life!
+            Welcome to my corner of the internet! I'm based in <strong>Jaipur</strong>, and while I *do* write incredibly awesome code, I promise my entire personality isn't just staring at a terminal. 
+            <br><br>
+            I believe life is all about style, strategy, and good lighting. Scroll down to see what I mean! ✨
         </div>
 
-        <div class="grid">
-            <div class="card scroll-reveal" style="animation-delay: 0.1s;">
-                <h3>💻 Master Coder</h3>
-                <p>I build scalable software solutions and love turning complex problems into elegant code.</p>
+        <!-- Chess & Black Shirt -->
+        <div class="story-row scroll-reveal">
+            <div class="story-text-box">
+                <h3>♟️ The Grandmaster</h3>
+                <p>Okay, maybe not a grandmaster <em>yet</em>. But I play chess religiously. When I'm wearing a black shirt and staring pensively to the left, I'm either calculating 10 moves ahead, or trying to remember if I left the stove on. By the way, I totally know how the horse moves. That's 90% of the game, right?</p>
             </div>
-            <div class="card scroll-reveal" style="animation-delay: 0.3s;">
-                <h3>🎓 B.Tech Grad</h3>
-                <p>A strong foundation in computer science principles allows me to engineer high-quality systems.</p>
+            <div class="story-image-box">
+                <img src="assets/BlackShirt.JPG" alt="Me playing chess in my mind" class="framed-img">
             </div>
-            <div class="card scroll-reveal" style="animation-delay: 0.5s;">
-                <h3>🏍️ Rider</h3>
-                <p>Nothing beats the thrill of the open road. Riding bikes is my ultimate way to recharge.</p>
+        </div>
+
+        <!-- Vacation Mode: Cyan Shirt & Ship -->
+        <div class="story-row reverse scroll-reveal">
+            <div class="story-text-box">
+                <h3>🌊 The Ocean Whisperer</h3>
+                <p>Catch me by the water, pretending I own a yacht. Whether I'm rocking a cyan shirt on a sunny beach or looking dramatically away on a ship, I bring the vacation vibes wherever I go.</p>
             </div>
-            <div class="card scroll-reveal" style="animation-delay: 0.7s;">
-                <h3>🎮 Gamer</h3>
-                <p>Strategic thinker and team player, whether I'm debugging code or clutching a multiplayer match.</p>
+            <div class="story-image-box" style="display: flex; gap: 15px;">
+                <img src="assets/Beach.JPg" alt="Beach Vibes" class="framed-img tilt-left" style="width: 200px; height: 250px; object-fit: cover;">
+                <img src="assets/Ship.jpg" alt="On a Ship" class="framed-img" style="width: 200px; height: 250px; object-fit: cover; margin-top: 40px;">
+            </div>
+        </div>
+
+        <!-- Winter & Villa Vibes -->
+        <div class="story-row scroll-reveal">
+            <div class="story-text-box">
+                <h3>❄️ The Aesthetic Survivor</h3>
+                <p>From surviving the freezing snow in a brown leather jacket (because style > warmth) to casually lounging in a villa in a crisp white shirt... I take my candid photos very seriously.</p>
+            </div>
+            <div class="story-image-box" style="display: flex; gap: 15px;">
+                <img src="assets/Snow.jpeg" alt="Snow Jacket" class="framed-img" style="width: 200px; height: 250px; object-fit: cover;">
+                <img src="assets/WhiteShirt.jpeg" alt="Villa White Shirt" class="framed-img tilt-left" style="width: 200px; height: 250px; object-fit: cover; margin-top: 40px;">
+            </div>
+        </div>
+
+        <!-- The Rider Link -->
+        <div class="story-row reverse scroll-reveal">
+            <div class="story-text-box">
+                <h3>🏍️ The Road King</h3>
+                <p>Want to see me in my ultimate element wearing my absolute favorite awesome leather jacket? Click the photo to check out my Royal Enfield adventures.</p>
+            </div>
+            <div class="story-image-box">
+                <a href="bike.html" style="display: inline-block;">
+                    <img src="assets/LeatherJacket.jpg" alt="Awesome Leather Jacket" class="framed-img">
+                </a>
             </div>
         </div>
     </section>
@@ -214,10 +83,10 @@
         // --- Typing Animation Logic ---
         const textArray = [
             "Software Engineer.",
-            "B.Tech Graduate.",
-            "Passionate Gamer.",
-            "Bike Rider.",
-            "Super Awesome Coder."
+            "Almost a Chess Grandmaster.",
+            "Occasional Model.",
+            "Leather Jacket Enthusiast.",
+            "Professional Daydreamer."
         ];
         let textIndex = 0;
         let charIndex = 0;
